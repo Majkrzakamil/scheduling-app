@@ -1,0 +1,7 @@
+<div *ngFor="let day of daysOfWeek">
+	<label>
+		<input type="checkbox" [(ngModel)]="day.selected" (change)="updateSelectedDays(day)">
+		{{ day.name }}
+	</label>
+</div>
+<app-time-input [(times)]="times" [canEdit]="false" (timesChange)="handleTimeChange($event)"></app-time-input>

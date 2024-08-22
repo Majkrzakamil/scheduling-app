@@ -1,0 +1,7 @@
+<div class="calendar">
+	<div *ngFor="let day of getDaysInMonth()" (click)="toggleDateSelection(day)">
+		{{ day.getDate() }}
+		<span *ngIf="isSelected(day)">Selected</span>
+	</div>
+	<button (click)="selectLastDayOfMonth()">Last Day</button>
+</div>

@@ -1,0 +1,6 @@
+<label *ngIf="label">{{ label }}</label>
+<div *ngFor="let minute of minutes; let i = index" class="minute-input">
+	<input type="number" [(ngModel)]="minutes[i]" (ngModelChange)="logMinutes()" min="0" max="59">
+	<button *ngIf="minutes.length > 1" (click)="removeMinute(i)">Remove</button>
+</div>
+<button (click)="addMinute()" *ngIf="canEdit">Add Minute</button>

@@ -1,0 +1,6 @@
+<label *ngIf="label">{{ label }}</label>
+<div *ngFor="let time of times; let i = index" class="time-input">
+	<input type="time" [(ngModel)]="times[i]" (ngModelChange)="logTimes()">
+	<button *ngIf="times.length > 1" (click)="removeTime(i)">Remove</button>
+</div>
+<button (click)="addTime()" *ngIf="canEdit">Add Time</button>

@@ -1,0 +1,9 @@
+<div class="schedule-options">
+	<button *ngFor="let type of ['hourly', 'daily', 'weekly', 'monthly']" (click)="scheduleType = type">
+		{{ type | uppercase }}
+	</button>
+</div>
+<app-hourly-schedule *ngIf="scheduleType === 'hourly'"></app-hourly-schedule>
+<app-daily-schedule *ngIf="scheduleType === 'daily'"></app-daily-schedule>
+<app-weekly-schedule *ngIf="scheduleType === 'weekly'"></app-weekly-schedule>
+<app-monthly-schedule *ngIf="scheduleType === 'monthly'"></app-monthly-schedule>
