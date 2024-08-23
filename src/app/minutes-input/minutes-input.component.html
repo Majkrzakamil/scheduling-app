@@ -1,8 +1,8 @@
-<div class="minute-input__wrapper">
+<div class="input__wrapper">
 	<label *ngIf="label">{{ label }}</label>
-	<div class="minute-input__controls">
-		<div *ngFor="let minute of minutes; let i = index" class="minute-input__container">
-			<input class="minute-input" type="number" [ngClass]="{'minute-input--has-remove': minutes.length > 1}"
+	<div class="input__controls">
+		<div *ngFor="let minute of minutes; let i = index" class="input__container">
+			<input class="input input--minutes" type="number" [ngClass]="{'input--has-remove': minutes.length > 1}"
 				[(ngModel)]="minutes[i]" (ngModelChange)="logMinutes()" min="0">
 			<button class="button button__remove" *ngIf="minutes.length > 1" (click)="removeMinute(i)"><i
 					class="fa-solid fa-xmark"></i></button>

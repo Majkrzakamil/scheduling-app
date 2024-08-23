@@ -1,8 +1,8 @@
-<div class="time-input__wrapper">
+<div class="input__wrapper">
 	<label *ngIf="label">{{ label }}</label>
-	<div class="time-input__controls">
-		<div *ngFor="let time of times; let i = index" class="time-input__container">
-			<div class="time-input" [ngClass]="{'time-input--has-remove': times.length > 1}">
+	<div class="input__controls">
+		<div *ngFor="let time of times; let i = index" class="input__container">
+			<div class="input input--time" [ngClass]="{'input--has-remove': times.length > 1}">
 				<i class="far fa-clock"></i>
 				<input type="time" [(ngModel)]="times[i]" (ngModelChange)="logTimes()">
 			</div>
