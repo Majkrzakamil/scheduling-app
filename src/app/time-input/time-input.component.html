@@ -1,6 +1,14 @@
-<label *ngIf="label">{{ label }}</label>
-<div *ngFor="let time of times; let i = index" class="time-input">
-	<input type="time" [(ngModel)]="times[i]" (ngModelChange)="logTimes()">
-	<button *ngIf="times.length > 1" (click)="removeTime(i)">Remove</button>
+<div class="time-input__wrapper">
+	<label *ngIf="label">{{ label }}</label>
+	<div class="time-input__controls">
+		<div *ngFor="let time of times; let i = index" class="time-input__container">
+			<div class="time-input" [ngClass]="{'time-input--has-remove': times.length > 1}">
+				<i class="far fa-clock"></i>
+				<input type="time" [(ngModel)]="times[i]" (ngModelChange)="logTimes()">
+			</div>
+			<button class="button button__remove" *ngIf="times.length > 1" (click)="removeTime(i)"><i
+					class="fa-solid fa-xmark"></i></button>
+		</div>
+		<button class="button button__add" (click)="addTime()" *ngIf="canEdit">+ Add time</button>
+	</div>
 </div>
-<button (click)="addTime()" *ngIf="canEdit">Add Time</button>

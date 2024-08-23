@@ -1,2 +1,4 @@
-<app-custom-datepicker (dateChange)="handleDateChange($event)"></app-custom-datepicker>
-<app-time-input [(times)]="times" [canEdit]="false" (timesChange)="handleTimeChange($event)"></app-time-input>
+<div class="wrapper">
+	<app-custom-datepicker (dateChange)="handleDateChange($event)"></app-custom-datepicker>
+	<app-time-input [(times)]="times" [canEdit]="false" (timesChange)="handleTimeChange($event)"></app-time-input>
+</div>

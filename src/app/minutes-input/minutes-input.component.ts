@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
 	selector: 'app-minutes-input',
 	templateUrl: './minutes-input.component.html',
+	styleUrls: ['./minutes-input.component.scss'],
 	standalone: true,
 	imports: [CommonModule, FormsModule]
 })

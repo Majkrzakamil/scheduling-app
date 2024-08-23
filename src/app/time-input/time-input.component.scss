@@ -1,0 +1,51 @@
+.time-input {
+	--input-padding: 0.5rem;
+	--input-icon-size: 1rem;
+	--input-gap: 0.5rem;
+	--input-icon-space: calc(var(--input-icon-size) + var(--input-gap));
+
+	width: fit-content;
+	background-color: var(--color-white);
+	border: 0.0625rem solid var(--color-grey);
+	border-radius: 0.25rem;
+	padding: var(--input-padding);
+	position: relative;
+
+	&:focus-within {
+		outline: 0.125rem solid var(--color-blue);
+	}
+
+	&--has-remove {
+		border-radius: var(--input-border-radius) 0 0 var(--input-border-radius);
+	}
+
+	&__wrapper {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 0.5rem;
+		align-items: center;
+	}
+
+	&__controls {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+
+	&__container {
+		display: flex;
+		align-items: stretch;
+	}
+
+	input[type="time"] {
+		padding-left: var(--input-icon-space);
+	}
+
+	.fa-clock {
+		position: absolute;
+		width: var(--input-icon-size);
+		height: var(--input-icon-size);
+		left: var(--input-padding);
+		pointer-events: none;
+	}
+}

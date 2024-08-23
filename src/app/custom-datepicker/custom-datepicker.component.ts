@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 export class CustomDatepickerComponent {
 	currentMonth: Date = new Date();
 	selectedDates: Date[] = [];
+	isLastDaySelected: boolean = false;
 
 	@Output() dateChange = new EventEmitter<Date[]>();
 
@@ -36,6 +37,7 @@ export class CustomDatepickerComponent {
 		} else {
 			this.selectedDates.push(new Date(day));
 		}
+		this.updateLastDaySelection();
 		this.dateChange.emit(this.selectedDates);
 	}
 
@@ -46,6 +48,21 @@ export class CustomDatepickerComponent {
 
 	selectLastDayOfMonth(): void {
 		const endOfMonth = new Date(this.currentMonth.getFullYear(), this.currentMonth.getMonth() + 1, 0);
-		this.toggleDateSelection(endOfMonth);
+		const isCurrentlySelected = this.selectedDates.some(d => d.getTime() === endOfMonth.getTime());
+
+		if (isCurrentlySelected) {
+			// Unselect the last day
+			this.toggleDateSelection(endOfMonth);
+			this.isLastDaySelected = false;
+		} else {
+			// Select the last day
+			this.toggleDateSelection(endOfMonth);
+			this.isLastDaySelected = true;
+		}
+	}
+
+	updateLastDaySelection(): void {
+		const lastDay = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0);
+		this.isLastDaySelected = this.selectedDates.some(d => d.getTime() === lastDay.getTime());
 	}
 }

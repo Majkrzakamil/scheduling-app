@@ -1,4 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'variables';
+@import 'container';
+@import 'wrapper';
+@import 'button';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	font-family: Roboto, "Helvetica Neue", sans-serif;
+	box-sizing: border-box;
+}
+
+input {
+	margin: 0;
+	padding: 0;
+	border: none;
+	outline: none;
+
+	&[type="time"]::-webkit-calendar-picker-indicator {
+		display: none;
+	}
+
+	&[type="number"] {
+
+		&::-webkit-outer-spin-button,
+		&::-webkit-inner-spin-button {
+			-webkit-appearance: none;
+		}
+	}
+}

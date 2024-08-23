@@ -1,7 +1,8 @@
-<div class="calendar">
-	<div *ngFor="let day of getDaysInMonth()" (click)="toggleDateSelection(day)">
+<ol class="calendar">
+	<li *ngFor="let day of getDaysInMonth()" (click)="toggleDateSelection(day)" class="calendar__day"
+		[ngClass]="{'selected': isSelected(day)}">
 		{{ day.getDate() }}
-		<span *ngIf="isSelected(day)">Selected</span>
-	</div>
-	<button (click)="selectLastDayOfMonth()">Last Day</button>
-</div>
+	</li>
+	<button class="calendar__button" (click)="selectLastDayOfMonth()" [ngClass]="{'selected': isLastDaySelected}">Last
+		Day</button>
+</ol>

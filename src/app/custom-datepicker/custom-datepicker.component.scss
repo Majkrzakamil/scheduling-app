@@ -1,12 +1,48 @@
-.calendar div {
-	display: inline-block;
-	padding: 5px;
-	margin: 2px;
-	border: 1px solid grey;
-	cursor: pointer;
-}
+.calendar {
+	--day-size: 2rem;
 
-.calendar div.selected {
-	background-color: #007BFF;
-	color: white;
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	gap: 0.5rem;
+	max-width: 10rem;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+
+	&__day {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: var(--day-size);
+		height: var(--day-size);
+		border-radius: calc(var(--day-size) / 2);
+		cursor: pointer;
+		background-color: var(--color-white);
+
+		&:hover {
+			background-color: var(--color-grey);
+		}
+
+		&.selected {
+			background-color: var(--color-yellow);
+		}
+	}
+
+	&__button {
+		grid-column: span 3;
+		text-align: center;
+		background-color: transparent;
+		border: none;
+		border-radius: calc(var(--day-size) / 2);
+		cursor: pointer;
+
+		&:hover {
+			background-color: var(--color-grey);
+		}
+
+		&.selected {
+			background-color: var(--color-yellow);
+		}
+	}
 }

@@ -1,0 +1,23 @@
+.button {
+  padding: 0.5rem;
+  cursor: pointer;
+
+  &__add {
+    background: transparent;
+    border: none;
+    color: var(--color-blue);
+    font-weight: bold;
+  }
+
+  &__remove {
+    color: var(--color-grey-dark);
+    background-color: var(--color-grey-light);
+    border: 0.0625rem solid var(--color-grey);
+    border-radius: 0 var(--input-border-radius) var(--input-border-radius) 0;
+
+    &:hover {
+      color: var(--color-grey-darker);
+      background-color: var(--color-grey);
+    }
+  }
+}

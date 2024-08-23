@@ -1,9 +1,13 @@
-<div class="schedule-options">
-	<button *ngFor="let type of ['hourly', 'daily', 'weekly', 'monthly']" (click)="scheduleType = type">
-		{{ type | uppercase }}
-	</button>
+<div class="container">
+	<div class="schedule-options">
+		<label *ngFor="let type of ['hourly', 'daily', 'weekly', 'monthly']">
+			<input type="radio" name="scheduleType" [value]="type" [(ngModel)]="scheduleType" />
+			{{ type | titlecase }}
+		</label>
+	</div>
+
+	<app-hourly-schedule *ngIf="scheduleType === 'hourly'"></app-hourly-schedule>
+	<app-daily-schedule *ngIf="scheduleType === 'daily'"></app-daily-schedule>
+	<app-weekly-schedule *ngIf="scheduleType === 'weekly'"></app-weekly-schedule>
+	<app-monthly-schedule *ngIf="scheduleType === 'monthly'"></app-monthly-schedule>
 </div>
-<app-hourly-schedule *ngIf="scheduleType === 'hourly'"></app-hourly-schedule>
-<app-daily-schedule *ngIf="scheduleType === 'daily'"></app-daily-schedule>
-<app-weekly-schedule *ngIf="scheduleType === 'weekly'"></app-weekly-schedule>
-<app-monthly-schedule *ngIf="scheduleType === 'monthly'"></app-monthly-schedule>
