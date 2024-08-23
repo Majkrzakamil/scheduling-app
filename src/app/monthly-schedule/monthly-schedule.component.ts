@@ -17,10 +17,18 @@ export class MonthlyScheduleComponent {
 
 	handleDateChange(dates: Date[]): void {
 		this.selectedDates = dates;
-		console.log('Selected dates:', this.selectedDates);
+		this.logCurrentState();
 	}
 
 	handleTimeChange(newTimes: string[]): void {
-		console.log('Selected time:', this.times);
+		this.times = newTimes;
+		this.logCurrentState();
+	}
+
+	logCurrentState(): void {
+		console.log({
+			selectedDates: this.selectedDates,
+			selectedTimes: this.times
+		});
 	}
 }

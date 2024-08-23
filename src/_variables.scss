@@ -6,4 +6,10 @@
 	--color-grey-light: #f0f5f7;
 	--color-white: #fff;
 	--color-blue: #0285B2;
+
+	--input-padding: 0.5rem;
+	--input-icon-size: 1rem;
+	--input-gap: 0.5rem;
+	--input-icon-space: calc(var(--input-icon-size) + var(--input-padding) + var(--input-gap));
+	--input-border-radius: 0.25rem;
 }

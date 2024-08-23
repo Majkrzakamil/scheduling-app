@@ -30,4 +30,8 @@ export class MinutesInputComponent {
 			this.logMinutes();
 		}
 	}
+
+	trackByIndex(index: number, item: any): any {
+		return index;
+	}
 }

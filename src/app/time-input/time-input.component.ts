@@ -32,4 +32,8 @@ export class TimeInputComponent {
 			this.logTimes();
 		}
 	}
+
+	trackByFn(index: any, item: any) {
+		return index;
+	}
 }
