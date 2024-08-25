@@ -33,9 +33,13 @@ export class WeeklyScheduleComponent {
 		this.logCurrentState();
 	}
 
-	handleTimeChange(newTimes: string[]): void {
-		this.times = newTimes;
-		this.logCurrentState();
+	handleTimeChange(newTimes: string[] | number[]): void {
+		if (typeof newTimes[0] === 'string') {
+			this.times = newTimes as string[];
+			this.logCurrentState();
+		} else {
+			console.error("Expected times of type string[], received number[]");
+		}
 	}
 
 	logCurrentState(): void {

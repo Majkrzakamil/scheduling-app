@@ -7,5 +7,5 @@
 			</label>
 		</div>
 	</div>
-	<app-time-input [(times)]="times" [canEdit]="false" (timesChange)="handleTimeChange($event)"></app-time-input>
+	<app-time-input [canEdit]="false" [inputType]="'time'" (itemsChange)="handleTimeChange($event)"></app-time-input>
 </div>

@@ -1,14 +1,30 @@
-<div class="input__wrapper">
-	<label class="input__label" *ngIf="label">{{ label }}</label>
-	<div class="input__controls">
-		<div *ngFor="let time of times; let i = index; trackBy: trackByFn" class="input__container">
-			<div class="input input--time" [ngClass]="{'input--has-remove': times.length > 1}">
-				<i class="far fa-clock"></i>
-				<input type="time" [(ngModel)]="times[i]" (ngModelChange)="logTimes()">
+<div class="time-input">
+	<label *ngIf="label" class="time-input__label">{{ label }}</label>
+	<div class="time-input__controls">
+		<!-- Handle time inputs -->
+		<ng-container *ngIf="inputType === 'time'">
+			<div *ngFor="let time of times; let i = index; trackBy: trackByFn" class="time-input__item">
+				<div class="time-input__input time-input__input--time"
+					[ngClass]="{'time-input__input--has-remove': times.length > 1}">
+					<i class="far fa-clock"></i>
+					<input type="time" [(ngModel)]="times[i]" (ngModelChange)="logItems()">
+				</div>
+				<button *ngIf="times.length > 1" (click)="removeItem(i)" class="button button__remove">
+					<i class="fa-solid fa-xmark"></i>
+				</button>
 			</div>
-			<button class="button button__remove" *ngIf="times.length > 1" (click)="removeTime(i)"><i
-					class="fa-solid fa-xmark"></i></button>
-		</div>
-		<button class="button button__add" (click)="addTime()" *ngIf="canEdit">+ Add time</button>
+		</ng-container>
+		<!-- Handle number inputs -->
+		<ng-container *ngIf="inputType === 'number'">
+			<div *ngFor="let number of numbers; let i = index; trackBy: trackByFn" class="time-input__item">
+				<input type="number" [(ngModel)]="numbers[i]" (ngModelChange)="logItems()" min="0"
+					class="time-input__input time-input__input--minutes"
+					[ngClass]="{'time-input__input--has-remove': numbers.length > 1}">
+				<button *ngIf="numbers.length > 1" (click)="removeItem(i)" class="button button__remove">
+					<i class="fa-solid fa-xmark"></i>
+				</button>
+			</div>
+		</ng-container>
+		<button (click)="addItem()" *ngIf="canEdit" class="button button__add">{{ buttonLabel }}</button>
 	</div>
 </div>

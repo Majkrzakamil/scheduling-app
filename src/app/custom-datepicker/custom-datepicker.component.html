@@ -3,6 +3,9 @@
 		[ngClass]="{'selected': isSelected(day)}">
 		{{ day.getDate() }}
 	</li>
-	<button class="calendar__button" (click)="selectLastDayOfMonth()" [ngClass]="{'selected': isLastDaySelected}">Last
-		Day</button>
+	<li class="calendar__item">
+		<button class="button button__calendar" (click)="selectLastDayOfMonth()"
+			[ngClass]="{'selected': isLastDaySelected}">Last
+			Day</button>
+	</li>
 </ol>

@@ -20,4 +20,20 @@
       background-color: var(--color-grey);
     }
   }
+
+  &__calendar {
+    text-align: center;
+    background-color: transparent;
+    border: none;
+    border-radius: calc(var(--day-size) / 2);
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--color-grey);
+    }
+
+    &.selected {
+      background-color: var(--color-yellow);
+    }
+  }
 }

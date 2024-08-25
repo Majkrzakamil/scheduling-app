@@ -13,7 +13,12 @@ import { TimeInputComponent } from '../time-input/time-input.component';
 export class DailyScheduleComponent {
 	times: string[] = [''];
 
-	handleTimeChanges(newTimes: string[]): void {
-		console.log(newTimes);
+	handleTimeChange(newTimes: string[] | number[]): void {
+		if (typeof newTimes[0] === 'string') {
+			this.times = newTimes as string[];
+			console.log(this.times);
+		} else {
+			console.error("Expected times of type string[], received number[]");
+		}
 	}
 }

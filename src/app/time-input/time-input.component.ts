@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core'
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -9,31 +9,50 @@ import { FormsModule } from '@angular/forms';
 	standalone: true,
 	imports: [CommonModule, FormsModule]
 })
-export class TimeInputComponent {
-	@Input() times: string[] = [];
-	@Input() canEdit: boolean = false;
+export class TimeInputComponent implements OnInit {
+	@Input() canEdit: boolean = true;
 	@Input() label?: string;
-	@Output() timesChange = new EventEmitter<string[]>();
+	@Input() buttonLabel: string = '+ Add minutes';
+	@Input() inputType: 'time' | 'number' = 'number';
+	@Output() itemsChange = new EventEmitter<string[] | number[]>();
 
-	logTimes(): void {
-		this.timesChange.emit(this.times);
+	times: string[] = [];
+	numbers: number[] = [];
+
+	ngOnInit() {
+		this.times = this.inputType === 'time' ? [''] : [];
+		this.numbers = this.inputType === 'number' ? [0] : [];
 	}
 
-	addTime(): void {
-		if (this.canEdit) {
+	logItems(): void {
+		if (this.inputType === 'time') {
+			this.itemsChange.emit(this.times);
+		} else {
+			this.itemsChange.emit(this.numbers);
+		}
+	}
+
+	addItem(): void {
+		if (this.inputType === 'time') {
 			this.times.push('');
-			this.logTimes();
+			this.logItems();
+		} else {
+			this.numbers.push(0);
+			this.logItems();
 		}
 	}
 
-	removeTime(index: number): void {
-		if (this.canEdit && this.times.length > 1) {
+	removeItem(index: number): void {
+		if (this.inputType === 'time' && this.times.length > 1) {
 			this.times.splice(index, 1);
-			this.logTimes();
+			this.logItems();
+		} else if (this.numbers.length > 1) {
+			this.numbers.splice(index, 1);
+			this.logItems();
 		}
 	}
 
-	trackByFn(index: any, item: any) {
+	trackByFn(index: number): number {
 		return index;
 	}
 }

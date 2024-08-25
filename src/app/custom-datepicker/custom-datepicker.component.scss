@@ -34,20 +34,12 @@
 		}
 	}
 
-	&__button {
+	&__item {
 		grid-column: span 3;
-		text-align: center;
-		background-color: transparent;
-		border: none;
-		border-radius: calc(var(--day-size) / 2);
-		cursor: pointer;
+		display: flex;
 
-		&:hover {
-			background-color: var(--color-grey);
-		}
-
-		&.selected {
-			background-color: var(--color-yellow);
+		.button {
+			flex-grow: 1;
 		}
 	}
 }

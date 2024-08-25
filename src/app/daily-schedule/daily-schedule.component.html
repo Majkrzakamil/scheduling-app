@@ -1,2 +1,2 @@
-<app-time-input [(times)]="times" [canEdit]="true" [label]="'At'" (timesChange)="handleTimeChanges($event)">
-</app-time-input>
+<app-time-input [canEdit]="true" [label]="'At'" [buttonLabel]="'+ Add time'" [inputType]="'time'"
+	(itemsChange)="handleTimeChange($event)"></app-time-input>
